@@ -1,0 +1,829 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Plan — Wieczór Panieński Wiktorii</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F4ECDD;
+    --paper-deep: #EADFC9;
+    --ink: #3A2A1A;
+    --ink-soft: #6B5640;
+    --terracotta: #B85738;
+    --olive: #6B7A3A;
+    --brass: #A87B36;
+    --hairline: #D4C4A6;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      radial-gradient(rgba(58,42,26,0.04) 1px, transparent 1px);
+    background-size: 3px 3px;
+    z-index: 0;
+    mix-blend-mode: multiply;
+  }
+
+  main {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 70px 28px 100px;
+  }
+
+  .eyebrow {
+    font-family: 'EB Garamond', serif;
+    font-size: 12px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    text-align: center;
+    margin: 0 0 22px;
+  }
+
+  .masthead-title {
+    font-family: 'DM Serif Display', serif;
+    font-weight: 400;
+    font-size: clamp(48px, 11vw, 84px);
+    line-height: 0.95;
+    text-align: center;
+    margin: 0 0 14px;
+    color: var(--ink);
+  }
+
+  .masthead-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(18px, 3vw, 22px);
+    text-align: center;
+    color: var(--ink-soft);
+    margin: 0 0 32px;
+    letter-spacing: 0.04em;
+  }
+
+  .ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin: 32px auto 50px;
+    max-width: 220px;
+  }
+
+  .ornament::before, .ornament::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--brass);
+  }
+
+  .ornament-mark {
+    color: var(--brass);
+    font-size: 12px;
+    letter-spacing: 0.4em;
+  }
+
+  .intro {
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 20px;
+    color: var(--ink-soft);
+    max-width: 520px;
+    margin: 0 auto 60px;
+  }
+
+  .day {
+    margin: 0 0 70px;
+    padding-top: 30px;
+    border-top: 1px solid var(--hairline);
+  }
+
+  .day-roman {
+    font-family: 'EB Garamond', serif;
+    font-size: 12px;
+    letter-spacing: 0.4em;
+    color: var(--terracotta);
+    text-transform: uppercase;
+    margin: 0 0 12px;
+  }
+
+  .day-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: clamp(28px, 5vw, 36px);
+    line-height: 1.15;
+    margin: 0 0 4px;
+    color: var(--ink);
+  }
+
+  .day-theme {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--olive);
+    letter-spacing: 0.04em;
+    margin: 0 0 28px;
+  }
+
+  .event {
+    display: grid;
+    grid-template-columns: 64px 1fr auto;
+    gap: 18px;
+    align-items: baseline;
+    padding: 14px 0;
+    border-bottom: 1px dotted var(--hairline);
+    position: relative;
+  }
+
+  .event:has(.cost.gift)::before {
+    content: '';
+    position: absolute;
+    left: -14px;
+    top: 14px;
+    bottom: 14px;
+    width: 2px;
+    background: var(--brass);
+    opacity: 0.7;
+  }
+
+  .event:has(.cost.optional)::before {
+    content: '';
+    position: absolute;
+    left: -14px;
+    top: 14px;
+    bottom: 14px;
+    width: 2px;
+    background: var(--terracotta);
+    opacity: 0.5;
+  }
+
+  .event:last-child { border-bottom: none; }
+
+  .event .time {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--ink-soft);
+    font-variant-numeric: oldstyle-nums;
+    white-space: nowrap;
+  }
+
+  .event .what {
+    font-family: 'EB Garamond', serif;
+    font-size: 17px;
+    color: var(--ink);
+  }
+
+  .event .what em {
+    font-style: italic;
+    color: var(--ink-soft);
+    display: block;
+    font-size: 14px;
+    margin-top: 2px;
+  }
+
+  .event .what a.venue-link {
+    display: inline-block;
+    margin-left: 6px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--terracotta);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(184, 87, 56, 0.4);
+    white-space: nowrap;
+  }
+
+  .event .cost {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12px;
+    color: var(--ink-soft);
+    white-space: nowrap;
+    text-align: right;
+    font-style: italic;
+    opacity: 0.55;
+  }
+
+  .event .cost.free, .event .cost.included {
+    color: var(--ink-soft);
+    font-style: italic;
+    font-size: 12px;
+    opacity: 0.55;
+  }
+
+  .event .cost.gift {
+    display: inline-block;
+    color: white;
+    background: var(--brass);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    padding: 4px 12px 5px;
+    border-radius: 2px;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+    text-transform: uppercase;
+    line-height: 1;
+    opacity: 1;
+  }
+
+  .event .cost.gift::before {
+    content: '✦ ';
+    color: white;
+    font-size: 11px;
+    margin-right: 1px;
+  }
+
+  .event .cost.optional {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(184, 87, 56, 0.07);
+    border: 1px solid rgba(184, 87, 56, 0.32);
+    color: var(--terracotta);
+    font-family: 'EB Garamond', serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 5px 11px 4px;
+    border-radius: 4px;
+    line-height: 1.05;
+    white-space: nowrap;
+    text-align: center;
+    opacity: 1;
+    font-style: normal;
+  }
+
+  .event .cost.optional small {
+    display: block;
+    color: var(--ink-soft);
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-top: 3px;
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    margin: -30px auto 50px;
+    max-width: 600px;
+    padding: 0 20px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.3;
+  }
+
+  .legend-swatch.gift {
+    background: var(--brass);
+    color: white;
+    font-style: italic;
+    font-size: 11px;
+    padding: 3px 9px;
+    border-radius: 2px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .legend-swatch.gift::before { content: '✦ '; font-size: 10px; }
+
+  .legend-swatch.optional {
+    background: rgba(184, 87, 56, 0.07);
+    border: 1px solid rgba(184, 87, 56, 0.32);
+    color: var(--terracotta);
+    font-family: 'EB Garamond', serif;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 3px 9px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+
+  .stays { margin: 80px auto 70px; }
+
+  .stays-eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--terracotta);
+    text-align: center;
+    margin: 0 0 6px;
+    letter-spacing: 0.05em;
+  }
+
+  .stays-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(38px, 7vw, 54px);
+    text-align: center;
+    margin: 0 0 50px;
+    color: var(--ink);
+    line-height: 1.05;
+  }
+
+  .stay-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 36px 26px;
+  }
+
+  .stay-card { display: flex; flex-direction: column; }
+
+  .stay-cover {
+    aspect-ratio: 4/3;
+    width: 100%;
+    object-fit: cover;
+    background: var(--paper-deep);
+    box-shadow: 0 6px 24px rgba(54, 32, 18, 0.12);
+    margin-bottom: 22px;
+  }
+
+  .stay-rating {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--terracotta);
+    margin-bottom: 6px;
+  }
+
+  .stay-rating::before { content: '★'; color: var(--brass); font-style: normal; margin-right: 4px; }
+
+  .stay-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 26px;
+    color: var(--ink);
+    margin: 0 0 4px;
+    line-height: 1.15;
+  }
+
+  .stay-where {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--ink-soft);
+    margin: 0 0 12px;
+  }
+
+  .stay-dates {
+    font-family: 'EB Garamond', serif;
+    font-size: 13px;
+    color: var(--ink-soft);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin: 0 0 16px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .stay-facts {
+    font-family: 'EB Garamond', serif;
+    font-size: 14px;
+    color: var(--ink);
+    margin: 0 0 14px;
+    line-height: 1.5;
+  }
+
+  .stay-amenities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0 0 18px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .stay-amenities li {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 12px;
+    color: var(--ink-soft);
+    background: var(--paper-deep);
+    padding: 4px 10px;
+    border-radius: 2px;
+  }
+
+  .stay-link {
+    display: inline-block;
+    font-family: 'EB Garamond', serif;
+    font-size: 13px;
+    color: var(--terracotta);
+    text-decoration: none;
+    border-bottom: 1px solid var(--terracotta);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    align-self: flex-start;
+  }
+
+  @media (max-width: 900px) {
+    .stay-grid { grid-template-columns: 1fr; gap: 50px; }
+  }
+
+  .price-banner {
+    margin: 0 auto 50px;
+    padding: 28px 32px;
+    background: var(--paper-deep);
+    border-top: 2px solid var(--terracotta);
+    border-bottom: 2px solid var(--terracotta);
+    text-align: center;
+    max-width: 580px;
+  }
+
+  .price-banner-amount {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(40px, 8vw, 56px);
+    color: var(--terracotta);
+    line-height: 1;
+    margin: 0 0 6px;
+  }
+
+  .price-banner-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--ink);
+    margin: 0 0 14px;
+  }
+
+  .price-banner-detail {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin: 0;
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  .moments { margin: 80px auto 70px; }
+
+  .moments-eyebrow {
+    font-family: 'EB Garamond', serif;
+    font-size: 12px;
+    color: var(--terracotta);
+    text-align: center;
+    margin: 0 0 16px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+  }
+
+  .moments-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(36px, 6vw, 48px);
+    text-align: center;
+    margin: 0 auto 18px;
+    color: var(--ink);
+    line-height: 1.05;
+    font-weight: 400;
+  }
+
+  .moments-rule {
+    width: 60px;
+    height: 1px;
+    background: var(--brass);
+    margin: 0 auto 56px;
+    border: none;
+  }
+
+  .collage {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px 32px;
+  }
+
+  .moment img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    background: var(--paper-deep);
+    border: 8px solid white;
+    box-shadow: 0 4px 18px rgba(54, 32, 18, 0.14);
+  }
+
+  .moment figcaption {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 17px;
+    text-align: center;
+    margin-top: 16px;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+
+  .moment-day {
+    display: block;
+    font-style: normal;
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-top: 8px;
+    font-family: 'EB Garamond', serif;
+  }
+
+  @media (max-width: 720px) {
+    .collage { grid-template-columns: 1fr; gap: 44px; }
+  }
+
+  .block {
+    margin: 60px 0;
+    padding: 36px 32px;
+    background: var(--paper-deep);
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .block-title {
+    font-family: 'EB Garamond', serif;
+    font-size: 12px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin: 0 0 22px;
+    text-align: center;
+  }
+
+  .block table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'EB Garamond', serif;
+    font-size: 16px;
+  }
+
+  .block td {
+    padding: 10px 0;
+    border-bottom: 1px dotted var(--hairline);
+    vertical-align: baseline;
+  }
+
+  .block tr:last-child td { border-bottom: none; }
+
+  .block td.cost-cell {
+    text-align: right;
+    color: var(--brass);
+    font-family: 'Cormorant Garamond', serif;
+    white-space: nowrap;
+  }
+
+  .block .total-row td {
+    padding-top: 18px;
+    font-style: italic;
+    font-size: 17px;
+    border-top: 1px solid var(--terracotta);
+    border-bottom: none;
+  }
+
+  .block .total-row td.cost-cell {
+    color: var(--terracotta);
+    font-style: normal;
+  }
+
+  .notes {
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 1px solid var(--hairline);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--ink-soft);
+    text-align: center;
+    line-height: 1.7;
+  }
+
+  .signature {
+    text-align: center;
+    margin-top: 50px;
+    font-family: 'EB Garamond', serif;
+    font-size: 12px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--brass);
+  }
+
+  @media (max-width: 540px) {
+    main { padding: 50px 22px 80px; }
+    .event { grid-template-columns: 56px 1fr; gap: 14px; }
+    .event .cost { grid-column: 2 / 3; text-align: left; margin-top: 2px; }
+    .block { padding: 28px 22px; }
+  }
+</style>
+</head>
+<body>
+<main>
+
+  <p class="eyebrow">Plan podróży · 1–5 sierpnia 2026</p>
+  <h1 class="masthead-title">Wieczór<br><em style="font-family:'Cormorant Garamond';font-style:italic;font-weight:500;">panieński</em><br>Wiktorii</h1>
+  <p class="masthead-sub">Bergamo &nbsp;·&nbsp; Lago di Garda</p>
+  <div class="ornament"><span class="ornament-mark">✦</span></div>
+
+  <p class="intro">Pięć dni we Włoszech — Bergamo, plaża Coco Beach, rejs po jeziorze i termy w Sirmione.</p>
+
+  <div class="price-banner">
+    <p class="price-banner-amount">1575 zł</p>
+    <p class="price-banner-label">na osobę — wszystko w cenie</p>
+    <p class="price-banner-detail">loty Wizz Air · zakwaterowanie · pociągi i taksówki<br>jedzenie i drinki · Coco Beach LA ISLA</p>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item">
+      <span class="legend-swatch gift">od Olgi</span>
+      <span>prezent ode mnie<br>(ekstra, poza wkładem)</span>
+    </div>
+    <div class="legend-item">
+      <span class="legend-swatch optional">~zł</span>
+      <span>opcjonalnie<br>(własny koszt na miejscu)</span>
+    </div>
+  </div>
+
+  <section class="moments">
+    <hr class="moments-rule">
+    <div class="collage">
+      <figure class="moment moment-1">
+        <img src="https://cocobeachclub.com/wp-content/uploads/2021/03/T__1223-1-1024x640.jpg" alt="Coco Beach LA ISLA">
+        <figcaption>Niedziela na białej plaży<span class="moment-day">Dzień II · Coco Beach</span></figcaption>
+      </figure>
+      <figure class="moment moment-2">
+        <img src="https://visitsirmione.com/wp-content/uploads/2024/06/8x2-Bisogna-saper-sognare-Ph-Roberto-Bellini-giugno-2024.jpg" alt="Sirmione">
+        <figcaption>Półwysep Sirmione<span class="moment-day">Dzień III · Sirmione</span></figcaption>
+      </figure>
+      <figure class="moment moment-3">
+        <img src="https://visitsirmione.com/wp-content/uploads/2019/12/castello-scaligero-notturno-sirmione-turismo.jpg" alt="Aquaria">
+        <figcaption>Termalne baseny o zachodzie słońca<span class="moment-day">Dzień III · Aquaria</span></figcaption>
+      </figure>
+      <figure class="moment moment-4">
+        <img src="https://www.visitbergamo.net/wp-content/uploads/2024/06/DSC1524-piazza-vecchia_portici_cappella-colleoni.jpg" alt="Bergamo">
+        <figcaption>Wieczór w Città Alta<span class="moment-day">Dzień IV · Bergamo</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="stays">
+    <p class="stays-eyebrow">Casa nostra</p>
+    <h2 class="stays-title">Gdzie śpimy</h2>
+    <div class="stay-grid">
+      <article class="stay-card">
+        <img class="stay-cover" src="https://a0.muscache.com/im/pictures/30dfe4fc-2b2a-4dfa-95e6-71887dc0be12.jpg?im_w=960" alt="your home Bergamo Centro">
+        <span class="stay-rating">4.76 · Guest Favourite</span>
+        <h3 class="stay-name">your home Bergamo Centro</h3>
+        <p class="stay-where">Bergamo Bassa · Superhost Valeria (7 lat)</p>
+        <p class="stay-dates">Sobota 1 sierpnia · 1 noc</p>
+        <p class="stay-facts">W sercu Bergamo Bassa, 10 min od stacji · 1 sypialnia · 3 łóżka · 1 łazienka · do 6 osób</p>
+        <ul class="stay-amenities">
+          <li>10 min od stacji</li>
+          <li>4 min do autobusu na BGY</li>
+          <li>Self check-in</li>
+          <li>Kuchnia</li>
+        </ul>
+        <a class="stay-link" href="https://www.airbnb.co.uk/rooms/32499969" target="_blank" rel="noopener">Zobacz na Airbnb →</a>
+      </article>
+      <article class="stay-card">
+        <img class="stay-cover" src="https://a0.muscache.com/im/pictures/909be576-c06e-48ee-9577-c63a9f69f1b8.jpg?im_w=960" alt="Red & Blu Luxury Apartment 2">
+        <span class="stay-rating">4.85 · 130 opinii</span>
+        <h3 class="stay-name">Red &amp; Blu Luxury Apartment 2</h3>
+        <p class="stay-where">Desenzano del Garda · Superhost Adriana (9 lat)</p>
+        <p class="stay-dates">Niedziela–poniedziałek · 2 noce</p>
+        <p class="stay-facts">Odnowiony apartament, 1. piętro · 2 sypialnie + sofa · 3 łóżka · 1 łazienka · do 6 osób</p>
+        <ul class="stay-amenities">
+          <li>Kuchnia w pełni wyposażona</li>
+          <li>Klimatyzacja w salonie</li>
+          <li>Self check-in</li>
+          <li>15 min od stacji</li>
+        </ul>
+        <a class="stay-link" href="https://www.airbnb.co.uk/rooms/18192003" target="_blank" rel="noopener">Zobacz na Airbnb →</a>
+      </article>
+      <article class="stay-card">
+        <img class="stay-cover" src="https://a0.muscache.com/im/pictures/hosting/Hosting-1155500479924079590/original/f4ce3464-ddbe-4fae-89ac-939472627214.jpeg?im_w=960" alt="House in downtown Bergamo">
+        <span class="stay-rating">4.91 · Guest Favourite</span>
+        <h3 class="stay-name">House in downtown Bergamo</h3>
+        <p class="stay-where">Centrum Bergamo · Superhost Daniel</p>
+        <p class="stay-dates">Wtorek 4 sierpnia · 1 noc</p>
+        <p class="stay-facts">10 min od lotniska BGY · 2 sypialnie · 3 łóżka · 2 łazienki · do 6 osób</p>
+        <ul class="stay-amenities">
+          <li>10 min od BGY</li>
+          <li>Klimatyzacja</li>
+          <li>Self check-in 24h</li>
+          <li>Schowek na bagaże</li>
+        </ul>
+        <a class="stay-link" href="https://www.airbnb.co.uk/rooms/1155500479924079590" target="_blank" rel="noopener">Zobacz na Airbnb →</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="day">
+    <p class="day-roman">Dzień I</p>
+    <h2 class="day-title">Sobota, 1 sierpnia</h2>
+    <p class="day-theme">Przylot do Bergamo</p>
+    <div class="event"><span class="time">późno</span><span class="what">Lot Wizz Air Katowice → Bergamo</span><span class="cost included">wliczone</span></div>
+    <div class="event"><span class="time">noc</span><span class="what">Taksówka z lotniska BGY do Città Alta</span><span class="cost included">wliczone</span></div>
+    <div class="event"><span class="time">noc</span><span class="what">Apartament w Città Alta</span><span class="cost included">wliczone</span></div>
+  </section>
+
+  <section class="day">
+    <p class="day-roman">Dzień II</p>
+    <h2 class="day-title">Niedziela, 2 sierpnia</h2>
+    <p class="day-theme">Dzień nad jeziorem · Coco Beach</p>
+    <div class="event"><span class="time">9:00</span><span class="what">Śniadanie w apartamencie</span><span class="cost included">wliczone</span></div>
+    <div class="event"><span class="time">10:00</span><span class="what">Spacer po Piazza Vecchia, Bazylika Santa Maria Maggiore</span><span class="cost free">bezpłatnie</span></div>
+    <div class="event"><span class="time">10:30</span><span class="what">Pociąg Bergamo → Brescia (50 min)</span><span class="cost included">wliczone</span></div>
+    <div class="event"><span class="time">11:30</span><span class="what">Pociąg Brescia → Desenzano-Sirmione (15 min)</span><span class="cost included">wliczone</span></div>
+    <div class="event"><span class="time">12:00</span><span class="what">Apartament w Desenzano — zostawiamy bagaże</span><span class="cost included">wliczone</span></div>
+    <div class="event"><span class="time">13:00</span><span class="what">Lunch piknikowy z supermarketu nad jeziorem przy Villi Romanej</em></span><span class="cost included">wliczone</span></div>
+    <div class="event"><span class="time">14:00–18:00</span><span class="what">Plaża publiczna w Desenzano<em>piaszczysta zatoczka tuż za mariną</em></span><span class="cost free">bezpłatnie</span></div>
+    <div class="event"><span class="time">18:30</span><span class="what">Powrót do apartamentu — prysznic, przygotowania na wieczór<em>aperitivo na tarasie z butelką prosecco</em></span><span class="cost gift">od Olgi</span></div>
+    <div class="event"><span class="time">19:30</span><span class="what">Taksówka do Coco Beach</span><span class="cost included">wliczone</span></div>
+    <div class="event"><span class="time">20:00–00:30</span><span class="what"><strong style="font-family:'Cormorant Garamond';font-weight:600;">LA ISLA</strong> — aperitivo, bufet, set DJ na plaży<em>wstęp i drink wliczone, do tego bufet aperitivo<br><a class="venue-link" href="https://www.instagram.com/cocobeach_club/" target="_blank" rel="noopener">@cocobeach_club ↗</a> <a class="venue-link" href="https://cocobeachclub.com/" target="_blank" rel="noopener">cocobeachclub.com ↗</a></em></span><span class="cost included">wliczone</span></div>
+    <div class="event"><span class="time">późno</span><span class="what">Taksówka powrotna do Desenzano</span><span class="cost included">wliczone</span></div>
+  </section>
+
+  <section class="day">
+    <p class="day-roman">Dzień III</p>
+    <h2 class="day-title">Poniedziałek, 3 sierpnia</h2>
+    <p class="day-theme">Sirmione i wieczór w termach Aquaria</p>
+    <div class="event"><span class="time">10:00</span><span class="what">Powolne śniadanie w apartamencie</span><span class="cost included">wliczone</span></div>
+    <div class="event"><span class="time">11:00</span><span class="what">Prom Desenzano → Sirmione (~25 min)<em>publiczny prom kursujący przez jezioro</em></span><span class="cost included">wliczone</span></div>
+    <div class="event"><span class="time">11:00</span><span class="what">Lub: rejs panoramiczny z postojem na lądzie<em>~75 min rejsu, Zamek Scaligerów od strony jeziora — opcjonalnie, dla chętnych</em></span><span class="cost optional">~150 zł<small>własny koszt</small></span></div>
+    <div class="event"><span class="time">popołudnie</span><span class="what">Sirmione — Zamek Scaligerów, Jamaica Beach</span><span class="cost free">bezpłatnie</span></div>
+    <div class="event"><span class="time">13:30</span><span class="what">Piknik z lokalnego deli — prosciutto, pecorino, brzoskwinie, focaccia<em>na trawniku przy Jamaica Beach z widokiem na zamek</em></span><span class="cost included">wliczone</span></div>
+    <div class="event"><span class="time">15:00</span><span class="what">Spacer na cypel półwyspu — widok na rzymskie ruiny i otwarte jezioro</span><span class="cost free">bezpłatnie</span></div>
+    <div class="event"><span class="time">16:30</span><span class="what">Gelato w Sirmione — przerwa przed wieczorem</span><span class="cost included">wliczone</span></div>
+    <div class="event"><span class="time">19:00–22:00</span><span class="what"><strong style="font-family:'Cormorant Garamond';font-weight:600;">Aquaria Thermal Spa</strong> — termalne baseny o zachodzie słońca<em>tarasowy solarium nad jeziorem, sauny, aperitivo na pomoście — opcjonalnie, dla chętnych<br><a class="venue-link" href="https://www.termedisirmione.com/en/admissions/" target="_blank" rel="noopener">termedisirmione.com ↗</a></em></span><span class="cost optional">~125 zł<small>własny koszt</small></span></div>
+    <div class="event"><span class="time">22:30</span><span class="what">Powrót do apartamentu w Desenzano</span><span class="cost included">wliczone</span></div>
+  </section>
+
+  <section class="day">
+    <p class="day-roman">Dzień IV</p>
+    <h2 class="day-title">Wtorek, 4 sierpnia</h2>
+    <p class="day-theme">Poranek nad jeziorem, wieczór w Bergamo</p>
+    <div class="event"><span class="time">10:00</span><span class="what">Kąpiel na publicznym lido w Desenzano + ruiny rzymskiej willi przy brzegu</span><span class="cost free">bezpłatnie</span></div>
+    <div class="event"><span class="time">12:00</span><span class="what">Wtorkowy targ w Desenzano — piknik nad jeziorem</span><span class="cost included">wliczone</span></div>
+    <div class="event"><span class="time">14:30</span><span class="what">Pociąg powrotny: Desenzano → Brescia → Bergamo</span><span class="cost included">wliczone</span></div>
+    <div class="event"><span class="time">16:30</span><span class="what">Apartament w Bergamo — zostawiamy bagaże, krótki odpoczynek</span><span class="cost included">wliczone</span></div>
+    <div class="event"><span class="time">17:30</span><span class="what">Spacer po Città Alta — Cappella Colleoni, weneckie mury, funicolare na San Vigilio</span><span class="cost included">wliczone</span></div>
+    <div class="event"><span class="time">18:30</span><span class="what">Aperitivo na Piazza Vecchia<em>Aperol Spritz i przekąski na placu Vecchia o zachodzie słońca</em></span><span class="cost gift">od Olgi</span></div>
+    <div class="event"><span class="time">20:30</span><span class="what">Kolacja w Birreria di Città Alta<em>casoncelli, polenta z górską serową, lokalne wino — opcjonalnie, dla chętnych</em></span><span class="cost optional">~110 zł<small>własny koszt</small></span></div>
+    <div class="event"><span class="time">22:30</span><span class="what">Spacer wzdłuż weneckich murów (UNESCO) — podświetlone nocą</span><span class="cost free">bezpłatnie</span></div>
+  </section>
+
+  <section class="day">
+    <p class="day-roman">Dzień V</p>
+    <h2 class="day-title">Środa, 5 sierpnia</h2>
+    <p class="day-theme">Powrót do Polski</p>
+    <div class="event"><span class="time">6:00</span><span class="what">Taksówka na lotnisko BGY<em>wczesny start, lot o 8:00</em></span><span class="cost included">wliczone</span></div>
+    <div class="event"><span class="time">8:00</span><span class="what">Lot Wizz Air Bergamo → Katowice</span><span class="cost included">wliczone</span></div>
+  </section>
+
+  <div class="block">
+    <p class="block-title">Co jest w cenie 1575 zł</p>
+    <table>
+      <tr><td>Lot Wizz Air Katowice ↔ Bergamo</td><td class="cost-cell" style="font-style:italic;color:var(--olive);">w cenie</td></tr>
+      <tr><td>Cztery noce w apartamentach<br><em style="font-family:'Cormorant Garamond';font-style:italic;color:var(--ink-soft);font-size:14px;">2 noce Bergamo · 2 noce Desenzano del Garda</em></td><td class="cost-cell" style="font-style:italic;color:var(--olive);">w cenie</td></tr>
+      <tr><td>Wszystkie pociągi, prom i taksówki</td><td class="cost-cell" style="font-style:italic;color:var(--olive);">w cenie</td></tr>
+      <tr><td>Śniadania, obiady, kolacje<br><em style="font-family:'Cormorant Garamond';font-style:italic;color:var(--ink-soft);font-size:14px;">apartament, pikniki, restauracje, drinki</em></td><td class="cost-cell" style="font-style:italic;color:var(--olive);">w cenie</td></tr>
+      <tr><td>Coco Beach LA ISLA — wstęp i drink</td><td class="cost-cell" style="font-style:italic;color:var(--olive);">w cenie</td></tr>
+      <tr class="total-row"><td>Wkład od osoby </td><td class="cost-cell">1575 zł</td></tr>
+    </table>
+  </div>
+
+  <p class="notes">
+    <br>
+    <em style="font-family:'Cormorant Garamond';font-style:italic;color:var(--terracotta);">Opcjonalne dodatki dla chętnych:</em><br>
+    Aquaria — wieczór w termach (~125 zł) · Rejs panoramiczny do Sirmione (~150 zł) · Pożegnalna kolacja w Birreria (~110 zł)<br>
+  </p>
+
+  
+
+</main>
+</body>
+</html>
