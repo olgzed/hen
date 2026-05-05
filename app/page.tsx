@@ -239,12 +239,12 @@ export default function Home() {
         </div>
         <div className="event">
           <span className="time">noc</span>
-          <span className="what">Taksówka z lotniska BGY do Città Alta</span>
+          <span className="what">Taksówka z lotniska BGY do Bergamo</span>
           <span className="cost included">wliczone</span>
         </div>
         <div className="event">
           <span className="time">noc</span>
-          <span className="what">Apartament w Città Alta</span>
+          <span className="what">Apartament w Bergamo</span>
           <span className="cost included">wliczone</span>
         </div>
       </section>
