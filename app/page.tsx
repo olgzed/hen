@@ -50,7 +50,7 @@ export default function Home() {
       </div>
 
       <p className="intro">
-        Pięć dni we Włoszech — Bergamo, plaża Coco Beach, rejs po jeziorze i
+        Bergamo, plaża Coco Beach, rejs po jeziorze i
         termy w Sirmione.
       </p>
 
